@@ -6,6 +6,10 @@ The Curiosity Machine is an interactive, responsive website designed to encourag
 
 🌐 **Live Demo:** https://curiosity-machine-nine.vercel.app/
 
+## 👀 Preview
+
+![The Curiosity Machine Preview](public/preview.png)
+
 ## ✨ Features
 
 - **Explore Categories:** Discover questions across Science, Creativity, Psychology, and Life & Mindset.
