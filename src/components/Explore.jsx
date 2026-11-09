@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import {
   Atom,
@@ -13,6 +13,26 @@ import CategoryCard from './CategoryCard'
 function Explore() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedQuestion, setSelectedQuestion] = useState(null)
+
+  useEffect(() => {
+  if (!selectedCategory) return
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      closeCategory()
+    }
+  }
+
+  const previousOverflow = document.body.style.overflow
+
+  document.body.style.overflow = 'hidden'
+  window.addEventListener('keydown', handleKeyDown)
+
+  return () => {
+    document.body.style.overflow = previousOverflow
+    window.removeEventListener('keydown', handleKeyDown)
+  }
+}, [selectedCategory])
 
   const categories = [
     {
@@ -159,57 +179,74 @@ function Explore() {
         ))}
       </div>
 
+
       {selectedCategory && (
-        <div className="selected-category">
-
-          <h3>{selectedCategory.title}</h3>
-
-          <p>{selectedCategory.description}</p>
-
-          <h4>Questions to get you curious:</h4>
-
-          <ul>
-            {selectedCategory.questions.map((item, index) => (
-              <li key={index}>
-                <button
-                  className="question-button"
-                  onClick={() => setSelectedQuestion(item)}
-                >
-                  {item.question} ↗
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          {selectedQuestion && (
-            <div className="question-answer">
-
-              <h4>{selectedQuestion.question}</h4>
-
-              <p>{selectedQuestion.answer}</p>
-
-              <p>
-                <strong>Did you know?</strong>
-                {' '}{selectedQuestion.fact}
-              </p>
-
-              <button
-                className="back-button"
-                onClick={() => setSelectedQuestion(null)}
-              >
-                Back to questions
-              </button>
-
-            </div>
-          )}
-
-          <button
-            className="close-category"
-            onClick={closeCategory}
+        <div
+          className="modal-overlay"
+          onClick={closeCategory}
+        >
+          <div
+            className="category-modal"
+            onClick={(e) => e.stopPropagation()}
           >
-            Close category
-          </button>
+            <button
+              className="modal-close"
+              onClick={closeCategory}
+              aria-label="Close modal"
+            >
+              &times;
+            </button>
 
+            <span className="modal-label">
+              {selectedCategory.number} / EXPLORE
+            </span>
+
+            <h3>{selectedCategory.title}</h3>
+            <p className="modal-description">
+              {selectedCategory.description}
+            </p>
+
+            {!selectedQuestion ? (
+              <>
+                <h4>Pick a question to explore</h4>
+
+                <div className="modal-questions">
+                  {selectedCategory.questions.map((item, index) => (
+                    <button
+                      key={index}
+                      className="modal-question"
+                      onClick={() => setSelectedQuestion(item)}
+                    >
+                      <span className="modal-question-number">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+
+                      <span>{item.question}</span>
+                      <span className="modal-arrow">↗</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="modal-answer">
+                <h4>{selectedQuestion.question}</h4>
+
+                <p>{selectedQuestion.answer}</p>
+
+                <div className="modal-fact">
+                  <strong>Did you know?</strong>
+                  <p>{selectedQuestion.fact}</p>
+                </div>
+
+                <button
+                  className="modal-back"
+                  onClick={() => setSelectedQuestion(null)}
+                >
+                  ← Back to questions
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
