@@ -83,4 +83,4 @@ The idea is simple: follow a question, discover something interesting, and keep 
 
 ---
 
-**Made with curiosity ✳**
+**Made with curiosity!**
