@@ -1,3 +1,4 @@
+import { ArrowUpRight} from 'lucide-react'
 
 function CategoryCard({
   number,
@@ -24,7 +25,7 @@ function CategoryCard({
       <p>{description}</p>
 
       <span className="category-link">
-        {linkText} ↗
+        {linkText} <ArrowUpRight size={17} />
       </span>
     </div>
   )

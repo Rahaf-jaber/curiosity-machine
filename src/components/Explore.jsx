@@ -1,3 +1,4 @@
+import { ArrowUpRight} from 'lucide-react'
 
 import { useState, useEffect } from 'react'
 
@@ -222,7 +223,7 @@ function Explore() {
                       </span>
 
                       <span>{item.question}</span>
-                      <span className="modal-arrow">↗</span>
+                      <span className="modal-arrow"><ArrowUpRight size={17} /></span>
                     </button>
                   ))}
                 </div>

@@ -1,3 +1,4 @@
+import { ArrowUpRight} from 'lucide-react'
 
 function Hero() {
     return (
@@ -16,24 +17,29 @@ function Hero() {
                 </p>
 
                 <a href="#explore" className="hero-button">
-                    Discover something new ↗
+                    Discover something new <ArrowUpRight size={17} />
                 </a>
             </div>
 
 
-            <div className="hero-visual">
-                <div className="orbit orbit-one">
-                    <div className="planet">
-                        <div className="planet-crater crater-one"></div>
-                        <div className="planet-crater crater-two"></div>
-                        <div className="planet-crater crater-three"></div>
-                    </div>
-                </div>
+            <div className="hero-art">
+                <div className="orbit orbit-one"></div>
+                <div className="orbit orbit-two"></div>
 
                 <span className="star star-one">✦</span>
                 <span className="star star-two">✧</span>
                 <span className="star star-three">✦</span>
-                <span className="star star-four">·</span>
+
+                <div className="planet">
+                    <div className="planet-ring"></div>
+                    <div className="planet-surface"></div>
+                </div>
+
+                <div className="floating-note">
+                    <span className="note-icon">✧</span>
+                    <span>Something<br/>unexpected awaits.</span>
+                </div>
+
             </div>
 
         </section>

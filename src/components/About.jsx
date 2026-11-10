@@ -1,3 +1,4 @@
+import { Asterisk} from 'lucide-react'
 
 function About() {
   return (
@@ -31,7 +32,7 @@ function About() {
         <div className="about-circle circle-one"></div>
         <div className="about-circle circle-two"></div>
 
-        <span className="about-star star-one">✳</span>
+        <span className="about-star star-one"><Asterisk size={22} strokeWidth={2.5} /></span>
         <span className="about-star star-two">✦</span>
 
         <p>Stay curious.</p>

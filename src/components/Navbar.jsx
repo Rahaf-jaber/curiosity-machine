@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { Asterisk, ArrowUpRight} from 'lucide-react'
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -12,7 +13,9 @@ function Navbar() {
     <nav className="navbar">
 
       <a href="#home" className="logo" onClick={closeMenu}>
-        <span className="logo-symbol">✳</span>
+        <span className="logo-symbol">
+          <Asterisk size={22} strokeWidth={2.5} />
+        </span>
         <span>
           The Curiosity
           <br />
@@ -41,7 +44,7 @@ function Navbar() {
       </ul>
 
       <a href="#explore" className="nav-cta">
-        Get Curious ↗
+        Get Curious <ArrowUpRight size={16} />
       </a>
 
       <button

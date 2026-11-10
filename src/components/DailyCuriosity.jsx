@@ -1,4 +1,4 @@
-
+import { ArrowUpRight} from 'lucide-react'
 import { useState } from 'react'
 
 function DailyCuriosity() {
@@ -78,14 +78,18 @@ function DailyCuriosity() {
             className="answer-button"
             onClick={() => setShowAnswer(!showAnswer)}
           >
-            {showAnswer ? 'Hide answer' : 'Reveal answer ↗'}
+            {showAnswer ? (
+              'Hide answer'
+            ) : (
+              <>Reveal answer <ArrowUpRight size={17} /></>
+            )}
           </button>
 
           <button
             className="next-question-button"
             onClick={showNextQuestion}
           >
-            Another question ↗
+            Another question <ArrowUpRight size={17} />
           </button>
 
         </div>

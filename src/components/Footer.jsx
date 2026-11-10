@@ -1,3 +1,5 @@
+import { Asterisk} from 'lucide-react'
+
 function Footer() {
   return (
     <footer className="footer">
@@ -18,7 +20,7 @@ function Footer() {
 
       <div className="footer-bottom">
         <p>© 2026 The Curiosity Machine. All rights reserved.</p>
-        <span>Stay curious ✳</span>
+        <span>Stay curious <Asterisk size={15} strokeWidth={2.5} /></span>
       </div>
     </footer>
   )
